@@ -1,0 +1,15 @@
+{
+    "name": "lensmedia/myparcel-bundle",
+    "description": "Symfony bundle to summarize Myparcel features",
+    "type": "symfony-bundle",
+    "require": {
+        "symfony/framework-bundle": "^8.1",
+        "myparcelnl/sdk": "^10.7",
+        "symfony/translation": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lens\\Bundle\\MyparcelBundle\\": "src/"
+        }
+    }
+}
