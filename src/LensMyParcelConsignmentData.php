@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lens\Bundle\MyparcelBundle;
+namespace Lens\Bundle\MyParcelBundle;
 
 class LensMyParcelConsignmentData
 {
