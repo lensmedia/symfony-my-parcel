@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use Lens\Bundle\MyparcelBundle\LensMyparcel;
-use Lens\Bundle\MyparcelBundle\LensMyParcelShipmentStatus;
+use Lens\Bundle\MyParcelBundle\LensMyparcel;
+use Lens\Bundle\MyParcelBundle\LensMyParcelShipmentStatus;
 
 return static function (ContainerConfigurator $container): void {
     $services = $container->services();
@@ -14,7 +14,6 @@ return static function (ContainerConfigurator $container): void {
         ->autowire()
         ->autoconfigure();
 
-    $services->set(LensMyparcel::class);
+    $services->set(LensMyParcel::class);
     $services->set(LensMyParcelShipmentStatus::class);
-
 };
