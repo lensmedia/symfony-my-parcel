@@ -10,7 +10,7 @@ use MyParcelNL\Sdk\Model\Carrier\CarrierPostNL;
 use MyParcelNL\Sdk\Model\Consignment\AbstractConsignment;
 use SensitiveParameter;
 
-class LensMyparcel
+class LensMyParcel
 {
     /** @var string ApiKey */
     private string $apiKey;
@@ -26,7 +26,7 @@ class LensMyparcel
     /**
      * @throws \Exception
      */
-    public function createConsignment(LensMyparcelConsignmentData $consignmentData): AbstractConsignment
+    public function createConsignment(LensMyParcelConsignmentData $consignmentData): AbstractConsignment
     {
         $consignment = (ConsignmentFactory::createByCarrierId(CarrierPostNL::ID))
             ->setApiKey($this->apiKey)
@@ -64,7 +64,7 @@ class LensMyparcel
      * @throws \MyParcelNL\Sdk\Exception\AccountNotActiveException
      * @throws \Exception
      */
-    public function createConcept(LensMyparcelConsignmentData $consignmentData): void
+    public function createConcept(LensMyParcelConsignmentData $consignmentData): void
     {
         $consignment = $this->createConsignment($consignmentData);
 

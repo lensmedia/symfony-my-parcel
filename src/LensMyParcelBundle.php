@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
-class LensMyparcelBundle extends AbstractBundle
+class LensMyParcelBundle extends AbstractBundle
 {
     public function configure(DefinitionConfigurator $definition): void
     {
@@ -20,7 +20,7 @@ class LensMyparcelBundle extends AbstractBundle
     {
         $configurator->import('../config/services.php');
 
-        $container->getDefinition(LensMyparcel::class)
+        $container->getDefinition(LensMyParcel::class)
             ->setArgument('$apiKey', $config['api_key']);
     }
 

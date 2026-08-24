@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Lens\Bundle\MyparcelBundle;
 
-class LensMyparcelConsignmentData
+class LensMyParcelConsignmentData
 {
     public string $reference;
 
