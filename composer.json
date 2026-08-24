@@ -1,5 +1,5 @@
 {
-    "name": "lensmedia/myparcel-bundle",
+    "name": "lensmedia/symfony-my-parcel",
     "description": "Symfony bundle to summarize Myparcel features",
     "type": "symfony-bundle",
     "require": {
