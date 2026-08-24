@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="nl" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="my_parcel.status.pending.concept">
+                <source>my_parcel.status.pending.concept</source>
+                <target>De zending is aangemaakt</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.pending.registered">
+                <source>my_parcel.status.pending.registered</source>
+                <target>De zending is aangemeld en wordt volgbaar</target>
+            </trans-unit>
+
+            <trans-unit id="my_parcel.status.enroute.handed_to_carrier">
+                <source>my_parcel.status.enroute.handed_to_carrier</source>
+                <target>Overgedragen aan vervoerder</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.enroute.sorting">
+                <source>my_parcel.status.enroute.sorting</source>
+                <target>Zending gesorteerd in sorteercentrum</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.enroute.distribution">
+                <source>my_parcel.status.enroute.distribution</source>
+                <target>Bezorger is onderweg</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.enroute.customs">
+                <source>my_parcel.status.enroute.customs</source>
+                <target>Bij de douane</target>
+            </trans-unit>
+
+            <trans-unit id="my_parcel.status.delivered.at_recipient">
+                <source>my_parcel.status.delivered.at_recipient</source>
+                <target>Bezorgd bij ontvanger</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.delivered.ready_for_pickup">
+                <source>my_parcel.status.delivered.ready_for_pickup</source>
+                <target>Klaar om af te halen</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.delivered.package_picked_up">
+                <source>my_parcel.status.delivered.package_picked_up</source>
+                <target>Afgehaald</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.delivered.return_shipment_ready_for_pickup">
+                <source>my_parcel.status.delivered.return_shipment_ready_for_pickup</source>
+                <target>Retourzending klaar om af te halen</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.delivered.return_shipment_package_picked_up">
+                <source>my_parcel.status.delivered.return_shipment_package_picked_up</source>
+                <target>Retourzending afgehaald</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.delivered.at_agreed_location">
+                <source>my_parcel.status.delivered.at_agreed_location</source>
+                <target>Bezorgd op afgesproken locatie</target>
+            </trans-unit>
+
+            <trans-unit id="my_parcel.status.printed.letter">
+                <source>my_parcel.status.printed.letter</source>
+                <target>Brief afgedrukt</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.printed.digital_stamp">
+                <source>my_parcel.status.printed.digital_stamp</source>
+                <target>Digitale postzegel aangemaakt</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.printed.external_shipment">
+                <source>my_parcel.status.printed.external_shipment</source>
+                <target>Externe zending afgedrukt</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.printed.untracked_shipment">
+                <source>my_parcel.status.printed.untracked_shipment</source>
+                <target>Zending afgedrukt</target>
+            </trans-unit>
+
+            <trans-unit id="my_parcel.status.credited">
+                <source>my_parcel.status.credited</source>
+                <target>Gecrediteerd</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.expired">
+                <source>my_parcel.status.expired</source>
+                <target>Verlopen</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.cancelled">
+                <source>my_parcel.status.cancelled</source>
+                <target>Geannuleerd</target>
+            </trans-unit>
+
+            <trans-unit id="my_parcel.status.inactive.concept">
+                <source>my_parcel.status.inactive.concept</source>
+                <target>Zending geannuleerd</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.inactive.registered">
+                <source>my_parcel.status.inactive.registered</source>
+                <target>Zending niet meer actief</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.inactive.enroute.handed_to_carrier">
+                <source>my_parcel.status.inactive.enroute.handed_to_carrier</source>
+                <target>Zending niet meer actief</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.inactive.enroute.sorting">
+                <source>my_parcel.status.inactive.enroute.sorting</source>
+                <target>Zending niet meer actief</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.inactive.enroute.distribution">
+                <source>my_parcel.status.inactive.enroute.distribution</source>
+                <target>Zending niet meer actief</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.inactive.enroute.customs">
+                <source>my_parcel.status.inactive.enroute.customs</source>
+                <target>Zending niet meer actief</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.inactive.delivered.at_recipient">
+                <source>my_parcel.status.inactive.delivered.at_recipient</source>
+                <target>Zending niet meer actief</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.inactive.delivered.ready_for_pickup">
+                <source>my_parcel.status.inactive.delivered.ready_for_pickup</source>
+                <target>Zending niet meer actief</target>
+            </trans-unit>
+            <trans-unit id="my_parcel.status.inactive.delivered.package_picked_up">
+                <source>my_parcel.status.inactive.delivered.package_picked_up</source>
+                <target>Zending niet meer actief</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -3,9 +3,10 @@
     "description": "Symfony bundle to summarize Myparcel features",
     "type": "symfony-bundle",
     "require": {
-        "symfony/framework-bundle": "^8.1",
+        "symfony/framework-bundle": "^7.0",
         "myparcelnl/sdk": "^10.7",
-        "symfony/translation": "^8.1"
+        "symfony/translation": "^7.0",
+        "symfony/dependency-injection": "^7.0"
     },
     "autoload": {
         "psr-4": {
