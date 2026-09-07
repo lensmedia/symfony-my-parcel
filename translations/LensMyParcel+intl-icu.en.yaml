@@ -1,0 +1,42 @@
+my_parcel:
+    status:
+        pending:
+            concept: The shipment has been created
+            registered: The shipment has been registered and will become trackable
+
+        enroute:
+            handed_to_carrier: Handed over to the carrier
+            sorting: Shipment sorted at the sorting centre
+            distribution: Courier is on the way
+            customs: At customs
+
+        delivered:
+            at_recipient: Delivered to the recipient
+            ready_for_pickup: Ready for pickup
+            package_picked_up: Picked up
+            return_shipment_ready_for_pickup: Return shipment ready for pickup
+            return_shipment_package_picked_up: Return shipment picked up
+            at_agreed_location: Delivered at the agreed location
+
+        printed:
+            letter: Letter printed
+            digital_stamp: Digital stamp created
+            external_shipment: External shipment printed
+            untracked_shipment: Shipment printed
+
+        credited: Credited
+        expired: Expired
+        cancelled: Cancelled
+
+        inactive:
+            concept: Shipment cancelled
+            registered: Shipment no longer active
+            enroute:
+                handed_to_carrier: Shipment no longer active
+                sorting: Shipment no longer active
+                distribution: Shipment no longer active
+                customs: Shipment no longer active
+            delivered:
+                at_recipient: Shipment no longer active
+                ready_for_pickup: Shipment no longer active
+                package_picked_up: Shipment no longer active

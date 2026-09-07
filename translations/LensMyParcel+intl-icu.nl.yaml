@@ -1,0 +1,42 @@
+my_parcel:
+    status:
+        pending:
+            concept: De zending is aangemaakt
+            registered: De zending is aangemeld en wordt volgbaar
+
+        enroute:
+            handed_to_carrier: Overgedragen aan vervoerder
+            sorting: Zending gesorteerd in sorteercentrum
+            distribution: Bezorger is onderweg
+            customs: Bij de douane
+
+        delivered:
+            at_recipient: Bezorgd bij ontvanger
+            ready_for_pickup: Klaar om af te halen
+            package_picked_up: Afgehaald
+            return_shipment_ready_for_pickup: Retourzending klaar om af te halen
+            return_shipment_package_picked_up: Retourzending afgehaald
+            at_agreed_location: Bezorgd op afgesproken locatie
+
+        printed:
+            letter: Brief afgedrukt
+            digital_stamp: Digitale postzegel aangemaakt
+            external_shipment: Externe zending afgedrukt
+            untracked_shipment: Zending afgedrukt
+
+        credited: Gecrediteerd
+        expired: Verlopen
+        cancelled: Geannuleerd
+
+        inactive:
+            concept: Zending geannuleerd
+            registered: Zending niet meer actief
+            enroute:
+                handed_to_carrier: Zending niet meer actief
+                sorting: Zending niet meer actief
+                distribution: Zending niet meer actief
+                customs: Zending niet meer actief
+            delivered:
+                at_recipient: Zending niet meer actief
+                ready_for_pickup: Zending niet meer actief
+                package_picked_up: Zending niet meer actief

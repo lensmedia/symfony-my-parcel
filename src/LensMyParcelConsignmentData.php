@@ -20,5 +20,4 @@ class LensMyParcelConsignmentData
     public string $recipient;
     public ?string $company = null;
     public string $email;
-
 }

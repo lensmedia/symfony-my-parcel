@@ -23,5 +23,4 @@ class LensMyParcelBundle extends AbstractBundle
         $container->getDefinition(LensMyParcel::class)
             ->setArgument('$apiKey', $config['api_key']);
     }
-
 }

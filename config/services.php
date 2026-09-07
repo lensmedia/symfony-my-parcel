@@ -16,5 +16,4 @@ return static function (ContainerConfigurator $container): void {
 
     $services->set(LensMyParcel::class);
     $services->set(LensMyParcelShipmentStatus::class);
-
 };
