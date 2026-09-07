@@ -8,6 +8,13 @@
         "symfony/translation": "^7.0 || ^8.0",
         "symfony/dependency-injection": "^7.0 || ^8.0"
     },
+    "require-dev": {
+        "symfony/twig-bundle": "^7.0 || ^8.0",
+        "symfony/ux-twig-component": "^2.0 || ^3.0"
+    },
+    "suggest": {
+        "symfony/ux-twig-component": "To use the MyParcel twig components"
+    },
     "autoload": {
         "psr-4": {
             "Lens\\Bundle\\MyParcelBundle\\": "src/"

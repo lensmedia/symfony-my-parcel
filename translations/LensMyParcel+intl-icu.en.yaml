@@ -1,4 +1,14 @@
 my_parcel:
+    track_trace:
+        heading: Track & trace
+        status: Status
+        history: History
+        time: Time
+        event: Status
+        location: Location
+        view_at_carrier: View at the carrier
+        unavailable: No track & trace information available.
+
     status:
         pending:
             concept: The shipment has been created

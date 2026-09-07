@@ -1,0 +1,46 @@
+{% trans_default_domain 'LensMyParcel' %}
+
+{% block track_trace %}
+    {% block heading %}
+        <h2>{{ 'my_parcel.track_trace.heading'|trans }}</h2>
+    {% endblock %}
+
+    {% if this.parcel %}
+        {% block status %}
+            <h3>{{ 'my_parcel.track_trace.status'|trans }}</h3>
+            <p>{{ this.status }}</p>
+        {% endblock %}
+
+        {% if this.history is not empty %}
+            {% block history %}
+                <h3>{{ 'my_parcel.track_trace.history'|trans }}</h3>
+
+                <table>
+                    <tr>
+                        <th>{{ 'my_parcel.track_trace.time'|trans }}</th>
+                        <th>{{ 'my_parcel.track_trace.event'|trans }}</th>
+                        <th>{{ 'my_parcel.track_trace.location'|trans }}</th>
+                    </tr>
+
+                    {% for event in this.history %}
+                        <tr>
+                            <td>{{ event['timestamp']|date('Y-m-d H:i') }}</td>
+                            <td>{{ event['status'] }}</td>
+                            <td>{{ event['location'] }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endblock %}
+        {% endif %}
+
+        {% if this.url %}
+            {% block link %}
+                <a href="{{ this.url }}">{{ 'my_parcel.track_trace.view_at_carrier'|trans }}</a>
+            {% endblock %}
+        {% endif %}
+    {% else %}
+        {% block empty %}
+            <p>{{ 'my_parcel.track_trace.unavailable'|trans }}</p>
+        {% endblock %}
+    {% endif %}
+{% endblock %}

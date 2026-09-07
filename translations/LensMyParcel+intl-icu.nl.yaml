@@ -1,4 +1,14 @@
 my_parcel:
+    track_trace:
+        heading: Track & trace
+        status: Status
+        history: Geschiedenis
+        time: Tijd
+        event: Status
+        location: Locatie
+        view_at_carrier: Bekijken bij de vervoerder
+        unavailable: Geen track & trace informatie beschikbaar.
+
     status:
         pending:
             concept: De zending is aangemaakt
