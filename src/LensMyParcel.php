@@ -43,7 +43,13 @@ class LensMyParcel
             // Recipient
             ->setPerson($consignmentData->recipient)
             ->setCompany($consignmentData->company)
-            ->setEmail($consignmentData->email);
+            ->setEmail($consignmentData->email)
+
+            // Setting a standard weight (in grams), default is 1kg set by creating a shipment in their backoffice.
+            // Creating a concept by their sdk does not auto include a weight, so that required value is missing.
+            ->setPhysicalProperties([
+                'weight' => 1000
+            ]);
 
         // Setting StreetAdditionalInfo or NumberSuffix based on strlen, this is on all sites (BAG, MyParcel, ours) different.
         // Since we only add concepts, this can always be checked/modified in MyParcel backoffice.
