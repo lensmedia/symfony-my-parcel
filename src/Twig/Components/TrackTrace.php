@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Lens\Bundle\MyParcelBundle\Twig\Components;
 
+use BadMethodCallException;
 use Lens\Bundle\MyParcelBundle\LensMyParcel;
 use MyParcelNL\Sdk\Model\Consignment\AbstractConsignment;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
@@ -25,7 +26,13 @@ class TrackTrace
     public function mount(string $identifier): void
     {
         $this->identifier = $identifier;
-        $this->parcel = $parcel = $this->myParcel->getParcel($identifier);
+
+        try {
+            $this->parcel = $parcel = $this->myParcel->getParcel($identifier);
+        } catch (BadMethodCallException) {
+            return;
+        }
+
         if (!$parcel) {
             return;
         }
