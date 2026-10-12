@@ -50,6 +50,6 @@ class LensMyParcelShipmentStatus
 
     public function getStatus(int $status): string
     {
-        return $this->translator->trans(self::STATUS[$status], domain: 'LensMyParcel');
+        return $this->translator->trans(self::STATUS[$status] ?? 'my_parcel.status.unknown', domain: 'LensMyParcel');
     }
 }

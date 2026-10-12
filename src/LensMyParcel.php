@@ -8,6 +8,7 @@ use MyParcelNL\Sdk\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\Model\Carrier\CarrierPostNL;
 use MyParcelNL\Sdk\Model\Consignment\AbstractConsignment;
+use MyParcelNL\Sdk\Model\MyParcelRequest;
 use SensitiveParameter;
 
 class LensMyParcel
@@ -80,26 +81,27 @@ class LensMyParcel
     }
 
     /**
+     * @return array<int, array<string, mixed>>
+     *
      * @throws \MyParcelNL\Sdk\Exception\ApiException
      * @throws \MyParcelNL\Sdk\Exception\MissingFieldException
      * @throws \MyParcelNL\Sdk\Exception\AccountNotActiveException
      */
-    public function findConsignment(string $identifier): MyParcelCollection
+    public function findShipments(string $identifier): array
     {
-        // Consignments by referenceId are only available by labels we created by using MyParcel SDK
-        $consignments = MyParcelCollection::findByReferenceId($identifier, $this->apiKey);
+        $shipments = $this->filterShipments(
+            $this->requestShipments(['reference_identifier' => $identifier]),
+            $identifier,
+        );
 
-        // So for older shipments, we can search all the fields (label_description) by 'q'
-        // There is no other way to filter for label_description
-        if ($consignments->count() === 0) {
-            // Size (items per page) is required, default is 30
-            return MyParcelCollection::query($this->apiKey, [
-                'q' => $identifier,
-                'size' => 30
-            ]);
+        if ($shipments) {
+            return $shipments;
         }
 
-        return $consignments;
+        return $this->filterShipments(
+            $this->requestShipments(['q' => $identifier, 'size' => 30]),
+            $identifier,
+        );
     }
 
     /**
@@ -107,25 +109,35 @@ class LensMyParcel
      * @throws \MyParcelNL\Sdk\Exception\ApiException
      * @throws \MyParcelNL\Sdk\Exception\AccountNotActiveException
      */
-    public function getParcel(string $identifier): ?AbstractConsignment
+    public function getParcel(string $identifier): ?LensMyParcelParcel
     {
-        $consignments = $this->findConsignment($identifier)->fetchTrackTraceData();
+        $shipment = $this->findShipments($identifier)[0] ?? null;
 
-        return $consignments->count() > 0 ? $consignments->first() : null;
+        if (!$shipment) {
+            return null;
+        }
+
+        $id = (int) $shipment['id'];
+        $trackTrace = $this->requestTrackTraces([$id])[$id] ?? [];
+
+        return new LensMyParcelParcel(
+            id: $id,
+            status: (int) $shipment['status'],
+            history: $trackTrace['history'] ?? [],
+            url: $trackTrace['link_tracktrace'] ?? null,
+        );
     }
 
-    public function getStatus(AbstractConsignment $consignment): string
+    public function getStatus(LensMyParcelParcel $parcel): string
     {
-        return $this->shipmentStatus->getStatus($consignment->getStatus());
+        return $this->shipmentStatus->getStatus($parcel->status);
     }
 
-    public function getHistory(AbstractConsignment $consignment): array
+    public function getHistory(LensMyParcelParcel $parcel): array
     {
-        $history = $consignment->getHistory();
-
         $out = [];
 
-        foreach ($history as $item) {
+        foreach ($parcel->history as $item) {
             $entry['timestamp'] = $item['time'];
             $entry['status'] = $item['description'];
             $entry['location'] = $item['location']['name'] ?? '-';
@@ -136,8 +148,57 @@ class LensMyParcel
         return $out;
     }
 
-    public function getTrackTraceUrl(AbstractConsignment $consignment): ?string
+    public function getTrackTraceUrl(LensMyParcelParcel $parcel): ?string
     {
-        return $consignment->getTrackTraceUrl();
+        return $parcel->url;
+    }
+
+    /**
+     * @return array<int, array<string, mixed>>
+     *
+     * @throws \MyParcelNL\Sdk\Exception\ApiException
+     * @throws \MyParcelNL\Sdk\Exception\MissingFieldException
+     * @throws \MyParcelNL\Sdk\Exception\AccountNotActiveException
+     */
+    private function requestShipments(array $query): array
+    {
+        $request = (new MyParcelRequest())
+            ->setRequestParameters($this->apiKey)
+            ->setQuery($query)
+            ->sendRequest('GET', MyParcelRequest::REQUEST_TYPE_SHIPMENTS);
+
+        return $request->getResult('data.shipments') ?? [];
+    }
+
+    /**
+     * @param int[] $ids
+     *
+     * @return array<int, array<string, mixed>>
+     *
+     * @throws \MyParcelNL\Sdk\Exception\ApiException
+     * @throws \MyParcelNL\Sdk\Exception\MissingFieldException
+     * @throws \MyParcelNL\Sdk\Exception\AccountNotActiveException
+     */
+    private function requestTrackTraces(array $ids): array
+    {
+        $request = (new MyParcelRequest())
+            ->setRequestParameters($this->apiKey)
+            ->sendRequest('GET', 'tracktraces/'.implode(';', $ids));
+
+        return array_column($request->getResult('data.tracktraces') ?? [], null, 'shipment_id');
+    }
+
+    /**
+     * @param array<int, array<string, mixed>> $shipments
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    private function filterShipments(array $shipments, string $identifier): array
+    {
+        return array_values(array_filter(
+            $shipments,
+            static fn (array $shipment): bool => ($shipment['options']['label_description'] ?? null) === $identifier
+                || ($shipment['reference_identifier'] ?? null) === $identifier,
+        ));
     }
 }

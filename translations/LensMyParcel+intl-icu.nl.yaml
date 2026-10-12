@@ -10,6 +10,7 @@ my_parcel:
         unavailable: Geen track & trace informatie beschikbaar.
 
     status:
+        unknown: Onbekende status
         pending:
             concept: De zending is aangemaakt
             registered: De zending is aangemeld en wordt volgbaar

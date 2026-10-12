@@ -10,6 +10,7 @@ my_parcel:
         unavailable: No track & trace information available.
 
     status:
+        unknown: Unknown status
         pending:
             concept: The shipment has been created
             registered: The shipment has been registered and will become trackable

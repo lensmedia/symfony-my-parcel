@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Lens\Bundle\MyParcelBundle\Twig\Components;
 
-use BadMethodCallException;
+use Exception;
 use Lens\Bundle\MyParcelBundle\LensMyParcel;
-use MyParcelNL\Sdk\Model\Consignment\AbstractConsignment;
+use Lens\Bundle\MyParcelBundle\LensMyParcelParcel;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
 #[AsTwigComponent(name: 'MyParcel:TrackTrace', template: '@LensMyParcel/components/track_trace.html.twig')]
 class TrackTrace
 {
     public string $identifier;
-    public ?AbstractConsignment $parcel = null;
+    public ?LensMyParcelParcel $parcel = null;
     public string $status = '';
     public array $history = [];
     public ?string $url = null;
@@ -29,7 +29,7 @@ class TrackTrace
 
         try {
             $this->parcel = $parcel = $this->myParcel->getParcel($identifier);
-        } catch (BadMethodCallException) {
+        } catch (Exception) {
             return;
         }
 
